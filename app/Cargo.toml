@@ -1,0 +1,28 @@
+[package]
+name = "app"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+wit-bindgen-rt = { version = "0.34.0", features = ["bitflags"] }
+
+[profile.release]
+codegen-units = 1
+opt-level = "s"
+debug = false
+strip = true
+lto = true
+
+[package.metadata.component]
+package = "component:app"
+
+[package.metadata.component.target]
+path = "../wit/app/world.wit"
+
+[package.metadata.component.target.dependencies]
+"component:calculator" = { path = "../wit/calculator/world.wit" }
+"component:adder" = { path = "../wit/adder/world.wit" }
+"component:subtractor" = { path = "../wit/subtractor/world.wit" }
+
+
+[package.metadata.component.dependencies]

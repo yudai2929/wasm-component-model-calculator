@@ -1,0 +1,15 @@
+package component:calculator;
+
+interface calc {
+    enum op {
+        add,
+        sub,
+    }
+    calc: func(op: op, a: u32, b: u32) -> u32;
+}
+
+world calculator {
+    export calc;
+    import component:adder/add;
+    import component:subtractor/sub;
+}
